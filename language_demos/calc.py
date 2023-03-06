@@ -63,31 +63,36 @@ def command_remove_history_entry(history):
             history.remove(entry)
             break
 
-
-# application state
-history = []
-
 calc_commands = ["add", "subtract", "multiply", "divide", "exponent"]
 
+def run():
 
-while True:
+    # application state
+    history = []
 
-    command = get_command()
+    while True:
 
-    if command in calc_commands:
-        operand = get_operand()
-        command_add_history_entry(
-            history, get_next_id(history), command, operand)
-        print(calc_result(history))   
-    elif command == "remove":
-        command_remove_history_entry(history)
-    elif command == "clear":
-        command_clear_history(history)
-    elif command == "history":
-        command_show_history(history)
-    elif command == "exit":
-        break
-    else:
-        print("Invalid Command, Try Again")
-        continue
+        command = get_command()
+
+        if command in calc_commands:
+            operand = get_operand()
+            command_add_history_entry(
+                history, get_next_id(history), command, operand)
+            print(calc_result(history))   
+        elif command == "remove":
+            command_remove_history_entry(history)
+        elif command == "clear":
+            command_clear_history(history)
+        elif command == "history":
+            command_show_history(history)
+        elif command == "exit":
+            break
+        else:
+            print("Invalid Command, Try Again")
+            continue
+
+print(f"calc.py name {__name__}")
+
+if __name__ == "__main__":
+    run()
 
