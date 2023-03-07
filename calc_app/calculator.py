@@ -29,6 +29,12 @@ class Calculator:
     def command_show_history(self):
         self.__history_list.show_history()
 
+    def command_load_history(self):
+        self.__history_list.load_history()
+
+    def command_save_history(self):
+        self.__history_list.save_history()
+
     def command_invalid(self):
         print("Invalid Command, Try Again")
 
