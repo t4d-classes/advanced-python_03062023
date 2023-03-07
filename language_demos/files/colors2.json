@@ -1,0 +1,17 @@
+[
+  {
+    "py/object": "__main__.Color",
+    "name": "red",
+    "hexcode": "ff0000"
+  },
+  {
+    "py/object": "__main__.Color",
+    "name": "green",
+    "hexcode": "00ff00"
+  },
+  {
+    "py/object": "__main__.Color",
+    "name": "blue",
+    "hexcode": "0000ff"
+  }
+]
