@@ -1,5 +1,7 @@
 # Exercise 6
 
+0. Create a new folder named `rates_app` in the `language_demos` folder.
+
 1. Create a new Python file named `business_days.py` in the `rates_app` folder. Do all coding for the exercise in the `business_days.py` file.
 
 2. Create a function named "business_days" that returns the business days between a start date and an end date. The date range should be inclusive of the start and end date. Use a generator to implement the function.
