@@ -58,7 +58,7 @@ def start_rates_api() -> None:
     # the statement below is assignment only
     global rates
 
-    rates_file_path = pathlib.Path("../data/eurofxref-hist.csv")
+    rates_file_path = pathlib.Path("../../data/eurofxref-hist.csv")
 
     rates = load_rates_from_history(rates_file_path)
 
