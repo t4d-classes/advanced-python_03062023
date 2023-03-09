@@ -1,5 +1,7 @@
 from datetime import date
 import requests
+import threading
+from concurrent.futures import ThreadPoolExecutor
 
 from business_days import business_days
 
@@ -24,11 +26,37 @@ def get_rates_sync(start_date, end_date):
   return rate_responses
 
 
-def get_rates_threaded(start_date, end_date):
-  ...
+def get_rate_thread(business_day, rate_responses):
+    response = requests.get(get_rate_url(business_day), timeout=60)
+    rate_responses.append(response.text)
+
+
+def get_rates_thread(start_date, end_date):
+    rate_responses = []
+    threads: list[threading.Thread] = []
+
+    for business_day in business_days(start_date, end_date):
+        a_thread = threading.Thread(target=get_rate_thread, args=(business_day, rate_responses))
+        a_thread.start()
+        threads.append(a_thread)
+
+    for a_thread in threads:
+        a_thread.join()
+
+    return rate_responses
+
+
+def get_rate_threadpool(business_day):
+    response = requests.get(get_rate_url(business_day), timeout=60)
+    return response.text
+
 
 def get_rates_threadpool(start_date, end_date):
-  ...
+    with ThreadPoolExecutor(max_workers=20) as executor:
+        return list(executor.map(
+            get_rate_threadpool,
+            list(business_days(start_date, end_date))
+        ))
 
 async def get_rates_async(start_date, end_date):
   ...
