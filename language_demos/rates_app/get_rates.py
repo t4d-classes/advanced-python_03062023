@@ -21,7 +21,7 @@ def get_rates_sync(start_date, end_date):
 
   for business_day in business_days(start_date, end_date):
     response = requests.get(get_rate_url(business_day), timeout=60)
-    rate_responses.append(response)
+    rate_responses.append(response.text)
   
   return rate_responses
 
