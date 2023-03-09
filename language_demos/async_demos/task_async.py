@@ -28,14 +28,18 @@ async def main() -> None:
 
     # await task_obj
 
-    def all_done(t):
+    def all_done(t: asyncio.Task):
         print(f"all done : task {t.result()}")
 
     task1 = asyncio.create_task(get_data(1))
-    task2 = asyncio.create_task(get_data(2))
+    # task2 = asyncio.create_task(get_data(2))
 
     task1.add_done_callback(all_done)
-    task2.add_done_callback(all_done)
+    # task2.add_done_callback(all_done)
+
+    #await task1
+    # while not task1.done():
+    #     await asyncio.sleep(0.1)
 
     # print("a")
     # await get_data(1)
@@ -53,7 +57,7 @@ async def main() -> None:
        
 
 
-    await asyncio.sleep(1)
+    # await asyncio.sleep(1)
 
     # await task1
     # await task2

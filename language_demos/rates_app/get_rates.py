@@ -2,6 +2,8 @@ from datetime import date
 import requests
 import threading
 from concurrent.futures import ThreadPoolExecutor
+import aiohttp
+import asyncio
 
 from business_days import business_days
 
@@ -57,9 +59,20 @@ def get_rates_threadpool(start_date, end_date):
             get_rate_threadpool,
             list(business_days(start_date, end_date))
         ))
+    
+    
+async def get_rate_async(session, business_day):
+   async with session.get(get_rate_url(business_day)) as resp:
+      return str(await resp.json())
 
 async def get_rates_async(start_date, end_date):
-  ...
+
+    async with aiohttp.ClientSession() as session:
+       return await asyncio.gather(*[
+          get_rate_async(session, business_day)
+          for business_day in business_days(start_date, end_date)
+       ])
+
 
 
 if __name__ == "__main__":
