@@ -1,0 +1,25 @@
+{
+    "editor.rulers": [
+        79
+    ],
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length=79"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--max-line-length=79",
+        "--unsafe-load-any-extension=y",
+        "--ignore=.git,venv,.vscode,__pycache__"
+    ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--exclude=venv,.git,__pycache__"
+    ],
+    "[markdown]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 79,
+    }
+}

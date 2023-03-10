@@ -1,0 +1,1 @@
+[{"py/object": "calc_app.history_list.HistoryEntry", "op_id": 1, "op_name": "add", "op_value": 1.0}, {"py/object": "calc_app.history_list.HistoryEntry", "op_id": 2, "op_name": "subtract", "op_value": 2.0}]
