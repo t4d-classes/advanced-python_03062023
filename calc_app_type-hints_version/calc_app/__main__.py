@@ -1,36 +1,30 @@
 """ calc app main """
 
-from calc_app.user_input import input_command, input_operand, input_entry_id
-from calc_app.user_output import (
-    output_result, output_list, output_unknown_command
-)
-from calc_app.calculator import math_ops, Calculator
-from calc_app.history import History
+from typing import Any
+from calc_app.user_input import input_command
+from calc_app.user_output import output_unknown_command
+from calc_app import commands as cmds
+from calc_app.history import math_ops
 
 
 def app() -> None:
     """ calc app main function """
 
-    history = History()
-    calculator = Calculator(history)
+    history: list[dict[str,Any]] = []
 
     command = input_command()
 
     while command:
         if command in math_ops:
-            operand = input_operand()
-            calculator.perform_math(command, operand)
-            output_result(calculator.get_result())
+            history = cmds.command_perform_math(history, command)
         elif command == "clear":
-            calculator.clear()
-            output_result(calculator.get_result())
+            history = cmds.command_clear()
         elif command == "history":
-            output_list(calculator.get_history())
+            cmds.command_print_history(history)
         elif command == "remove":
-            entry_id = input_entry_id()
-            calculator.remove_history_entry(entry_id)
+            history = cmds.command_remove_history_entry(history)
         elif command == "result":
-            output_result(calculator.get_result())
+            cmds.command_show_result(history)
         else:
             output_unknown_command()
 

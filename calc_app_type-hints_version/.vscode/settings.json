@@ -5,16 +5,16 @@
   "files.autoSave": "afterDelay",
   "python.languageServer": "Pylance",
   "editor.rulers": [
-    79
+   79
   ],
   "python.formatting.autopep8Args": [
-    "--aggressive"
+      "--aggressive"
   ],
   "python.linting.mypyArgs": [
-    "--ignore-missing-imports",
-    "--follow-imports=silent",
-    "--show-column-numbers",
-    "--strict"
+      "--ignore-missing-imports",
+      "--follow-imports=silent",
+      "--show-column-numbers",
+      "--strict"
   ],
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": true,
@@ -22,5 +22,5 @@
       "--max-line-length=79",
       "--unsafe-load-any-extension=y",
       "--ignore=.git,venv,.vscode,__pycache__"
-  ],
+  ]
 }
